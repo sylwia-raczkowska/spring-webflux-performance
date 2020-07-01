@@ -11,7 +11,7 @@ class BlockingLaunchController {
 
     private final BlockingLaunchRepository blockingLaunchRepository;
 
-    BlockingLaunchController(BlockingLaunchRepository blockingLaunchRepository) {
+    BlockingLaunchController(final BlockingLaunchRepository blockingLaunchRepository) {
         this.blockingLaunchRepository = blockingLaunchRepository;
     }
 
