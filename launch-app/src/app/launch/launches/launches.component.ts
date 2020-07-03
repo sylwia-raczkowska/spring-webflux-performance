@@ -8,7 +8,7 @@ import {LaunchBlockingService} from '../launch-blocking.service';
   selector: 'app-launches',
   templateUrl: './launches.component.html'
 })
-export class LaunchesComponent implements OnInit {
+export class LaunchesComponent {
   launchArray: Launch[] = [];
   selectedLaunch: Launch;
   mode: string;

@@ -4,7 +4,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Flux;
 
-public interface ReactiveLaunchRepository extends ReactiveMongoRepository<Launch, String> {
+interface ReactiveLaunchRepository extends ReactiveMongoRepository<LaunchReactive, String> {
 
-    Flux<Launch> findAllByIdNotNullOrderByIdAsc(final Pageable page);
+    Flux<LaunchReactive> findAllByIdNotNullOrderByIdAsc(final Pageable page);
 }

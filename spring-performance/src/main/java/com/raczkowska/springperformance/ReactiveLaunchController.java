@@ -1,6 +1,5 @@
 package com.raczkowska.springperformance;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,13 +20,13 @@ class ReactiveLaunchController {
     }
 
     @GetMapping("/launches-reactive")
-    public Flux<Launch> getQuoteFlux() {
+    public Flux<LaunchReactive> getQuoteFlux() {
         return reactiveLaunchRepository.findAll().delayElements(Duration.ofMillis(DELAY_PER_ITEM_MS));
     }
 
     @GetMapping("/launches-reactive-paged")
-    public Flux<Launch> getQuoteFlux(final @RequestParam(name = "page") int page,
-                                    final @RequestParam(name = "size") int size) {
+    public Flux<LaunchReactive> getQuoteFlux(final @RequestParam(name = "page") int page,
+                                          final @RequestParam(name = "size") int size) {
         return reactiveLaunchRepository.findAllByIdNotNullOrderByIdAsc(PageRequest.of(page, size))
                 .delayElements(Duration.ofMillis(DELAY_PER_ITEM_MS));
     }

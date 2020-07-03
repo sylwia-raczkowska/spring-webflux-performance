@@ -1,4 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://book_user:pass@localhost:27017/book_db
+      uri: mongodb+srv://dbUser:pass@cluster0.vg7uq.mongodb.net/launches?retryWrites=true&w=majority
+      database: launches
+moviesdb:
+  populatebyinitdata: true

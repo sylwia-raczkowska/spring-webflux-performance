@@ -5,7 +5,7 @@ import {Launch} from '../launch';
   selector: 'app-launch-detail',
   templateUrl: './launch-detail.component.html'
 })
-export class LaunchDetailComponent implements OnInit {
+export class LaunchDetailComponent {
   @Input() launch: Launch;
 
 }

@@ -8,8 +8,8 @@ import {Launch} from './launch';
 })
 export class LaunchBlockingService {
 
-  url: string = 'http://localhost:8080/quotes-blocking';
-  urlPaged: string = 'http://localhost:8080/quotes-blocking-paged';
+  url: string = 'http://localhost:8080/launches-blocking';
+  urlPaged: string = 'http://localhost:8080/launches-blocking-paged';
 
   constructor(private http: HttpClient) {}
 

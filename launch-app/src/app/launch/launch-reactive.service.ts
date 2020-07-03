@@ -7,8 +7,8 @@ import {Launch} from './launch';
 })
 export class LaunchReactiveService {
 
-  url: string = 'http://localhost:8080/quotes-reactive';
-  urlPaged: string = 'http://localhost:8080/quotes-reactive-paged';
+  url: string = 'http://localhost:8080/launches-reactive';
+  urlPaged: string = 'http://localhost:8080/launches-reactive-paged';
 
   getQuoteStream(page?: number, size?: number): Observable<Launch> {
     return new Observable<Launch>((observer) => {
