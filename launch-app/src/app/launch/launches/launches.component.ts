@@ -25,6 +25,7 @@ export class LaunchesComponent {
 
   resetData(): void {
     this.launchArray = [];
+    this.selectedLaunch = null;
   }
 
   requestLaunchStream(): void {
