@@ -10,11 +10,11 @@ export class LaunchReactiveService {
   url: string = 'http://localhost:8080/launches-reactive';
   urlPaged: string = 'http://localhost:8080/launches-reactive-paged';
 
-  getQuoteStream(page?: number, size?: number): Observable<Launch> {
+  getQuoteStream(page?: number): Observable<Launch> {
     return new Observable<Launch>((observer) => {
       let url = this.url;
       if (page != null) {
-        url = this.urlPaged + '?page=' + page + '&size=' + size;
+        url = this.urlPaged + '?page=' + page + '&size=' + 20;
       }
       const eventSource = new EventSource(url);
       eventSource.onmessage = (event) => {

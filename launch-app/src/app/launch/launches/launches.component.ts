@@ -14,13 +14,11 @@ export class LaunchesComponent {
   mode: string;
   pagination: boolean;
   page: number;
-  size: number;
 
   constructor(private launchReactiveService: LaunchReactiveService, private launchBlockingService: LaunchBlockingService, private cdr: ChangeDetectorRef) {
     this.mode = 'reactive';
     this.pagination = true;
     this.page = 0;
-    this.size = 50;
   }
 
   resetData(): void {
@@ -32,7 +30,7 @@ export class LaunchesComponent {
     this.resetData();
     let quoteObservable: Observable<Launch>;
     if (this.pagination === true) {
-      quoteObservable = this.launchReactiveService.getQuoteStream(this.page, this.size);
+      quoteObservable = this.launchReactiveService.getQuoteStream(this.page);
     } else {
       quoteObservable = this.launchReactiveService.getQuoteStream();
     }
@@ -45,8 +43,9 @@ export class LaunchesComponent {
   requestLaunchBlocking(): void {
     this.resetData();
     if (this.pagination === true) {
-      this.launchBlockingService.getQuotes(this.page, this.size)
-        .subscribe(q => this.launchArray = q);
+      this.launchBlockingService.getQuotes(this.page)
+        .subscribe(q => {this.launchArray = q.content;
+        });
     } else {
       this.launchBlockingService.getQuotes()
         .subscribe(q => this.launchArray = q);

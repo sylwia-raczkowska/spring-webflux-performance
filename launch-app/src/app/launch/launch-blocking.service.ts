@@ -13,10 +13,10 @@ export class LaunchBlockingService {
 
   constructor(private http: HttpClient) {}
 
-  getQuotes(page?: number, size?: number): Observable<Array<Launch>> {
+  getQuotes(page?: number): Observable<Array<Launch>> {
     let url = this.url;
     if (page != null) {
-      url = this.urlPaged + '?page=' + page + '&size=' + size;
+      url = this.urlPaged + '?page=' + page + '&size=' + 20;
     }
     return this.http.get<Array<Launch>>(url);
   }

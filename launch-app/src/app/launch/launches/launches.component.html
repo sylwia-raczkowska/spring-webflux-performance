@@ -2,18 +2,15 @@
   <div class="col-md-8">
     <p>
       <label>Pagination:
-        <input type="checkbox" [checked]="pagination" (change)="pagination = !pagination" >
+        <input type="checkbox"  class="form-control" [checked]="pagination" (change)="pagination = !pagination" >
         <label>Page #:
-          <input type="text" [(ngModel)]="page" size="2">
-        </label>
-        <label>Page Size:
-          <input type="text" [(ngModel)]="size" size="2">
+          <input type="text"  class="form-control" [(ngModel)]="page" size="2">
         </label>
       </label>
-      <button (click)="requestLaunchStream()">Reactive Request</button>
-      <button (click)="requestLaunchBlocking()">Blocking Request</button>
+      <button class="btn btn-primary" (click)="requestLaunchStream()">Reactive Request</button>
+      <button class="btn btn-primary" (click)="requestLaunchBlocking()">Blocking Request</button>
     </p>
-    <table class="table">
+    <table class="table  table-hover">
       <thead>
       <tr>
         <th>Quote ID</th>
@@ -32,6 +29,6 @@
   </div>
   <div class="col-md-4">
     <div class="message">Click on a launch for more details</div>
-    <app-launch-detail [launch]="selectedLaunch"></app-launch-detail>
+    <app-launch-detail *ngIf="selectedLaunch" [launch]="selectedLaunch"></app-launch-detail>
   </div>
 </div>

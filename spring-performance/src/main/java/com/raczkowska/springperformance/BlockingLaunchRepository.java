@@ -1,7 +1,7 @@
 package com.raczkowska.springperformance;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-interface BlockingLaunchRepository extends MongoRepository<LaunchBlock, String> {
+interface BlockingLaunchRepository extends PagingAndSortingRepository<LaunchBlock, String> {
 
 }
