@@ -1,15 +1,14 @@
 <div class="row">
   <div class="col-md-8">
-    <p>
-      <label>Pagination:
-        <input type="checkbox"  class="form-control" [checked]="pagination" (change)="pagination = !pagination" >
-        <label>Page #:
-          <input type="text"  class="form-control" [(ngModel)]="page" size="2">
-        </label>
+    <div class="form-group">
+      <label>
+        <input type="checkbox" id="pagination" [checked]="pagination" (change)="pagination = !pagination" > Pagination
       </label>
+      <label for="page" class="col-lg-2 control-label">Page #:</label>
+      <input type="text" id="page" class="form-control" [(ngModel)]="page" size="2">
+    </div>
       <button class="btn btn-primary" (click)="requestLaunchStream()">Reactive Request</button>
       <button class="btn btn-primary" (click)="requestLaunchBlocking()">Blocking Request</button>
-    </p>
     <table class="table  table-hover">
       <thead>
       <tr>

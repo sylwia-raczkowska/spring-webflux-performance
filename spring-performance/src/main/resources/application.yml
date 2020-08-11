@@ -1,7 +1,9 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://dbUser:pass@cluster0.vg7uq.mongodb.net/launches?retryWrites=true&w=majority
+      uri: mongodb://mongodb0.example.com:27017
       database: launches
+      username: root
+      password: root
 moviesdb:
   populatebyinitdata: true

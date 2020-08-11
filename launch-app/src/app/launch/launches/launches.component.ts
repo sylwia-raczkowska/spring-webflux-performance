@@ -44,7 +44,7 @@ export class LaunchesComponent {
     this.resetData();
     if (this.pagination === true) {
       this.launchBlockingService.getQuotes(this.page)
-        .subscribe(q => {this.launchArray = q.content;
+        .subscribe(q => {this.launchArray = q;
         });
     } else {
       this.launchBlockingService.getQuotes()
