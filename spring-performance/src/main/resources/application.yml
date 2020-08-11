@@ -1,9 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://mongodb0.example.com:27017
-      database: launches
-      username: root
-      password: root
+      uri: mongodb://localhost:27017/launches
+
 moviesdb:
   populatebyinitdata: true

@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class SpringPerformanceApplicationTests {
-
-	@Autowired
-	private BlockingLaunchRepository blockingLaunchRepository;
-
-	@Test
-	void contextLoads() {
-		Iterable<LaunchBlock> all = blockingLaunchRepository.findAll();
-	}
+//
+//	@Autowired
+//	private BlockingLaunchRepository blockingLaunchRepository;
+//
+//	@Test
+//	void contextLoads() {
+//		Iterable<LaunchBlock> all = blockingLaunchRepository.findAll();
+//	}
 
 }

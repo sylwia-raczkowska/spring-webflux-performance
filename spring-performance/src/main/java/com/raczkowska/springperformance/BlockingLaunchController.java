@@ -18,7 +18,6 @@ class BlockingLaunchController {
 
     @GetMapping("/launches-blocking")
     public Iterable<LaunchBlock> getQuotesBlocking() throws Exception {
-        Thread.sleep(DELAY_PER_ITEM_MS * blockingLaunchRepository.count());
         return blockingLaunchRepository.findAll();
     }
 

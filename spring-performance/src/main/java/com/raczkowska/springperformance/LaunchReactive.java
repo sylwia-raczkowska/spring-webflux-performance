@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Document(collection = "launch")
+@Document(collection = "launches")
 class LaunchReactive {
     @Id
     @EqualsAndHashCode.Include

@@ -16,7 +16,7 @@ class BlockingLaunchGatlingSimulation extends Simulation {
 
 
   val scn = scenario("Get Blocking Launches")
-    .repeat(10) {
+    .repeat(5) {
       exec(
         http("random_request")
           .get("/launches-blocking")
@@ -24,6 +24,6 @@ class BlockingLaunchGatlingSimulation extends Simulation {
       )
     }
 
-  setUp(scn.inject(atOnceUsers(500)).protocols(httpProtocol))
+  setUp(scn.inject(atOnceUsers(1000)).protocols(httpProtocol))
 
 }
