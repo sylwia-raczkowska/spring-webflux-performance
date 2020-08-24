@@ -18,7 +18,7 @@ class ReactiveLaunchService {
     }
 
     public Flux<ReactiveLaunch> findAll(Pageable pageable) {
-        return reactiveLaunchRepository.findAllByNameNotNullOrderByNameAsc(pageable)
+        return reactiveLaunchRepository.findAllByNameNotNullAndDescriptionNotNull(pageable)
                 .delayElements(Duration.ofMillis(DELAY_PER_ITEM_MS));
     }
 

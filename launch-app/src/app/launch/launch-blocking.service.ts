@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Launch} from './launch';
+import {Launch, LaunchResponse} from './launch';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +9,14 @@ import {Launch} from './launch';
 export class LaunchBlockingService {
 
   url: string = 'http://localhost:8080/launches-blocking';
-  urlPaged: string = 'http://localhost:8080/launches-blocking-paged';
 
   constructor(private http: HttpClient) {}
 
-  getQuotes(page?: number): Observable<Array<Launch>> {
+  getBlockingLaunches(page?: number): Observable<LaunchResponse> {
     let url = this.url;
     if (page != null) {
-      url = this.urlPaged + '?page=' + page + '&size=' + 20;
+      url = this.url + '?page=' + page + '&size=' + 50;
     }
-    return this.http.get<Array<Launch>>(url);
+    return this.http.get<LaunchResponse>(url);
   }
 }

@@ -7,26 +7,20 @@ import {Launch} from './launch';
 })
 export class LaunchReactiveService {
 
-  url: string = 'http://localhost:8080/launches-reactive';
-  urlPaged: string = 'http://localhost:8080/launches-reactive-paged';
+  url: string = 'http://localhost:8081/launches-reactive';
 
-  getQuoteStream(page?: number): Observable<Launch> {
+  getReactiveLaunches(page?: number): Observable<Launch> {
     return new Observable<Launch>((observer) => {
       let url = this.url;
       if (page != null) {
-        url = this.urlPaged + '?page=' + page + '&size=' + 20;
+        url = this.url + '?page=' + page + '&size=' + 50;
       }
       const eventSource = new EventSource(url);
       eventSource.onmessage = (event) => {
-        console.debug('Received event: ', event);
         const json = JSON.parse(event.data);
         observer.next(new Launch(json['id'], json['name'], json['description']));
       };
       eventSource.onerror = (error) => {
-        // readyState === 0 (closed) means the remote source closed the connection,
-        // so we can safely treat it as a normal situation. Another way
-        // of detecting the end of the stream is to insert a special element
-        // in the stream of events, which the client can identify as the last one.
         if(eventSource.readyState === 0) {
           console.log('The stream has been closed by the server.');
           eventSource.close();

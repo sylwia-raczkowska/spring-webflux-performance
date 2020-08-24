@@ -1,20 +1,24 @@
 <div class="row">
   <div class="col-md-8">
-    <div class="form-group">
-      <label>
-        <input type="checkbox" id="pagination" [checked]="pagination" (change)="pagination = !pagination" > Pagination
-      </label>
-      <label for="page" class="col-lg-2 control-label">Page #:</label>
-      <input type="text" id="page" class="form-control" [(ngModel)]="page" size="2">
+
+    <div class="page">
+      <label for="page" class="control-label page-label">Page #:</label>
+      <div class="col-lg-10">
+        <input type="text" id="page" class="form-control page-input" [(ngModel)]="page">
+      </div>
     </div>
-      <button class="btn btn-primary" (click)="requestLaunchStream()">Reactive Request</button>
+
+    <div class="form-group">
+      <button class="btn btn-primary button" (click)="requestLaunchStream()">Reactive Request</button>
       <button class="btn btn-primary" (click)="requestLaunchBlocking()">Blocking Request</button>
+    </div>
+
     <table class="table  table-hover">
       <thead>
       <tr>
-        <th>Quote ID</th>
-        <th>Book</th>
-        <th>Quote content</th>
+        <th>Launch ID</th>
+        <th>Name</th>
+        <th>Description</th>
       </tr>
       </thead>
       <tbody>
@@ -27,7 +31,7 @@
     </table>
   </div>
   <div class="col-md-4">
-    <div class="message">Click on a launch for more details</div>
+    <div class="message" *ngIf="!selectedLaunch">Click on a launch for more details</div>
     <app-launch-detail *ngIf="selectedLaunch" [launch]="selectedLaunch"></app-launch-detail>
   </div>
 </div>

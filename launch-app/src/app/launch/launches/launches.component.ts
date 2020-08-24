@@ -1,23 +1,20 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {Launch} from '../launch';
-import {Observable} from 'rxjs';
 import {LaunchReactiveService} from '../launch-reactive.service';
 import {LaunchBlockingService} from '../launch-blocking.service';
 
 @Component({
   selector: 'app-launches',
-  templateUrl: './launches.component.html'
+  templateUrl: './launches.component.html',
+  styleUrls: ['./launches.component.css']
 })
 export class LaunchesComponent {
   launchArray: Launch[] = [];
   selectedLaunch: Launch;
   mode: string;
-  pagination: boolean;
   page: number;
 
   constructor(private launchReactiveService: LaunchReactiveService, private launchBlockingService: LaunchBlockingService, private cdr: ChangeDetectorRef) {
-    this.mode = 'reactive';
-    this.pagination = true;
     this.page = 0;
   }
 
@@ -28,28 +25,18 @@ export class LaunchesComponent {
 
   requestLaunchStream(): void {
     this.resetData();
-    let quoteObservable: Observable<Launch>;
-    if (this.pagination === true) {
-      quoteObservable = this.launchReactiveService.getQuoteStream(this.page);
-    } else {
-      quoteObservable = this.launchReactiveService.getQuoteStream();
-    }
-    quoteObservable.subscribe(quote => {
-      this.launchArray.push(quote);
+    this.launchReactiveService.getReactiveLaunches(this.page).subscribe(launch => {
+      this.launchArray.push(launch);
       this.cdr.detectChanges();
     });
   }
 
   requestLaunchBlocking(): void {
     this.resetData();
-    if (this.pagination === true) {
-      this.launchBlockingService.getQuotes(this.page)
-        .subscribe(q => {this.launchArray = q;
-        });
-    } else {
-      this.launchBlockingService.getQuotes()
-        .subscribe(q => this.launchArray = q);
-    }
+    this.launchBlockingService.getBlockingLaunches(this.page)
+      .subscribe(launchResponse  => {
+        this.launchArray = launchResponse.content;
+      });
   }
 
   onSelect(launch: Launch): void {

@@ -9,3 +9,8 @@ export class Launch {
     this.description = description;
   }
 }
+
+export interface LaunchResponse {
+  content: Launch[];
+  totalElements: number;
+}

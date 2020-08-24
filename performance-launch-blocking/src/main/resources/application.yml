@@ -4,7 +4,7 @@ spring:
       uri: mongodb://localhost:27017/launches
 
 db:
-  populatebyinitdata: true
+  populatebyinitdata: false
 
 server:
   tomcat:
